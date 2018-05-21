@@ -16,7 +16,7 @@ class Login extends Component {
   }
 
   render() {
-    const { loggedInAs, isCreditCardHolder, setLoggedInAs } = this.props;
+    const { loggedInAs, isCCHolder, setLoggedInAs } = this.props;
 
     return (
       <div className="login">
@@ -24,7 +24,7 @@ class Login extends Component {
           Log in as <input onChange={(e) => this.updateLoginName(e.target.value)} /> <button className="button" onClick={() => setLoggedInAs(this.state.loginName)}>Go</button>
         </div>}
         {loggedInAs && <div>
-          Welcome, {loggedInAs}! {isCreditCardHolder && "(CC holder)"}
+          Welcome, {loggedInAs}! {isCCHolder && "(CC holder)"}
         </div>}
       </div>
     )
@@ -32,10 +32,12 @@ class Login extends Component {
 };
 
 const mapStateToProps = storeData => {
-  return{
+  return {
     loggedInAs: storeData.loggedInAs,
-    isCreditCardHolder: storeData.isCreditCardHolder
+    isCCHolder: storeData.isCreditCardHolder,
   };
 };
 
-export default connect(mapStateToProps)(Login);
+const connector = connect(mapStateToProps);
+const ConnectedLogin = connector(Login);
+export default ConnectedLogin;

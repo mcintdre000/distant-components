@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import CreditCardApplication from './CreditCardApplication';
+import Login from './Login';
 
-export default class Footer extends Component {
+export default class Header extends Component {
   render() {
     return (
-      <div className="footer">
+      <div className="header">
         <div className="box" />
         <div className="box" />
-        <div className="box">
-          <CreditCardApplication
+        <div className="box login-container">
+          <Login
             loggedInAs={this.props.loggedInAs}
             isCreditCardHolder={this.props.isCreditCardHolder}
-            setIsCreditCardHolder={this.props.setIsCreditCardHolder}
+            setLoggedInAs={this.props.setLoggedInAs}  
           />
         </div>
         <div className="box" />
